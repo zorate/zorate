@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zor-Ate Joseph — Builder</title>
+  <meta name="description" content="Self-taught Nigerian developer and startup builder. I build real products for real problems." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --black:   #0e0e0e;
+      --offwhite: #f4f1ec;
+      --blue:    #5aabf7;
+      --brown:   #b07d5b;
+      --muted:   #6b6560;
+      --border:  #d8d3cd;
+
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+      --mono:  'DM Mono', 'Courier New', monospace;
+
+      --max: 680px;
+      --pad: clamp(1.25rem, 5vw, 2.5rem);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--offwhite);
+      font-family: var(--sans);
+      font-size: clamp(15px, 2vw, 17px);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── LAYOUT ─── */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    section {
+      padding: clamp(3.5rem, 10vw, 6rem) 0;
+    }
+
+    /* ─── UTILITY ─── */
+    .label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .link {
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .link:hover { border-color: var(--blue); }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid #222;
+      margin: 0;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      padding: clamp(2rem, 6vw, 3.5rem) 0 0;
+    }
+
+    .site-name {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding-top: clamp(3rem, 8vw, 5rem);
+      padding-bottom: clamp(3.5rem, 10vw, 6rem);
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.25;
+      font-weight: 400;
+      color: var(--offwhite);
+      margin-bottom: 1.5rem;
+      max-width: 560px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      max-width: 480px;
+      font-size: 0.97rem;
+      line-height: 1.75;
+    }
+
+    /* ─── PROJECTS ─── */
+    #work {
+      background: var(--offwhite);
+      color: var(--black);
+    }
+
+    #work .label { color: var(--brown); }
+
+    .project {
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .project:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .project-name {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--brown);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .project-desc {
+      color: #3a3530;
+      font-size: 0.93rem;
+      line-height: 1.7;
+      margin-bottom: 0.9rem;
+      max-width: 560px;
+    }
+
+    .project-stack {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: #8a7e76;
+      margin-bottom: 0.9rem;
+      display: block;
+    }
+
+    .project-link {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--black);
+      border-bottom: 1px solid var(--brown);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .project-link:hover {
+      color: var(--brown);
+    }
+
+    /* ─── HOW I WORK ─── */
+    #how {
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .philosophy-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .philosophy-list li {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    .philosophy-list li::before {
+      content: "—";
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      margin-top: 0.1rem;
+    }
+
+    .philosophy-list p {
+      color: #c4bfba;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .philosophy-list strong {
+      color: var(--offwhite);
+      font-weight: 500;
+    }
+
+    /* ─── CURRENT FOCUS ─── */
+    #focus {
+      background: #111008;
+      border-top: 1px solid #1e1a14;
+    }
+
+    .focus-body {
+      color: #b8b2aa;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .focus-body strong {
+      color: var(--offwhite);
+      font-weight: 500;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .contact-headline {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 400;
+      color: var(--offwhite);
+      margin-bottom: 1.25rem;
+      line-height: 1.35;
+    }
+
+    .contact-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .contact-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--blue);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .contact-value:hover { border-color: var(--blue); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-note {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: #3a3630;
+    }
+
+    .footer-status {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: #3a3630;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4caf82;
+      display: inline-block;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 480px) {
+      .project-top {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="wrap">
+    <header>
+      <span class="site-name">ZOR-ATE JOSEPH</span>
+    </header>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="wrap">
+      <h1 class="hero-headline">
+        I build things that <em>actually work</em>,<br />
+        mostly by figuring it out as I go.
+      </h1>
+      <p class="hero-sub">
+        Self-taught developer based in Nigeria. I focus on backend systems — APIs, data pipelines, automation — and I'm slowly getting better at the rest. I build products that solve problems I can see with my own eyes.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <span class="label">What I've built</span>
+
+      <!-- TideScore -->
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">TideScore</span>
+          <span class="project-tag">v1 — Rule-based</span>
+        </div>
+        <p class="project-desc">
+          An alternative credit scoring system for Nigerians who don't have formal credit histories. Banks rely on records that most people don't have — TideScore uses different signals. It's not perfect, but it works and it's honest about its limits.
+        </p>
+        <span class="project-stack">Python · Google Sheets API · Email automation</span>
+        <a href="#" class="project-link">View project →</a>
+      </div>
+
+      <!-- GoalBox -->
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">GoalBox</span>
+          <span class="project-tag">v2 — Accountability</span>
+        </div>
+        <p class="project-desc">
+          A personal commitment tracker. Not a habit app, not a to-do list — something in between. Built to make you feel the weight of what you said you'd do. Started as a personal tool, then became a product.
+        </p>
+        <span class="project-stack">Python · Flask · Simple frontend</span>
+        <a href="#" class="project-link">View project →</a>
+      </div>
+
+      <!-- TrustCheck -->
+      <div class="project">
+        <div class="project-top">
+          <span class="project-name">TrustCheck</span>
+          <span class="project-tag">v3 — Most advanced</span>
+        </div>
+        <p class="project-desc">
+          A trust and relationship tracking system — built because informal credit and social trust are how most Nigerian transactions actually work. Has a backend API, a frontend interface, and real logic underneath. My most complete project so far.
+        </p>
+        <span class="project-stack">Python · FastAPI · HTML/CSS · REST API</span>
+        <a href="#" class="project-link">View project →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section id="how">
+    <div class="wrap">
+      <span class="label">How I work</span>
+      <ul class="philosophy-list">
+        <li>
+          <p><strong>I build before I fully understand.</strong> Reading documentation only gets me so far. Most of what I know came from breaking things and fixing them.</p>
+        </li>
+        <li>
+          <p><strong>I use AI as a tool, not a crutch.</strong> It helps me bridge gaps and move faster. The thinking, the problem definition, the debugging — that's still mine.</p>
+        </li>
+        <li>
+          <p><strong>I care about the real problem.</strong> Nigeria has specific constraints — intermittent infrastructure, informal economies, low trust between strangers. I build with those in mind.</p>
+        </li>
+        <li>
+          <p><strong>I ship imperfect things.</strong> A working product with rough edges is more useful than a perfect product that doesn't exist yet.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CURRENT FOCUS -->
+  <section id="focus">
+    <div class="wrap">
+      <span class="label">Right now</span>
+      <p class="focus-body">
+        Deepening my <strong>FastAPI and database skills</strong> — proper schema design, auth flows, and deployment that doesn't collapse under load. Also learning enough frontend to stop being completely dependent on others for UI work. The goal isn't to become a frontend developer. The goal is to stop being blocked by one.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="contact-headline">Let's talk if you're building something real.</h2>
+      <p class="contact-sub">
+        I'm open to collaboration, freelance backend work, or just a conversation about a problem you're trying to solve.
+      </p>
+      <div class="contact-links">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:your@email.com" class="contact-value">your@email.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="contact-value">github.com/yourusername</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Twitter / X</span>
+          <a href="https://twitter.com/yourusername" target="_blank" rel="noopener" class="contact-value">@yourusername</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-note">Built by hand. No template.</span>
+        <span class="footer-status">
+          <span class="status-dot"></span>
+          Available for work · Port Harcourt, Nigeria
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
