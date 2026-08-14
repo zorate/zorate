@@ -1,0 +1,42 @@
+﻿<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<main class="container section">
+  <div class="grid" style="grid-template-columns: 1fr; gap: 4rem; max-width: 900px; margin: 0 auto;">
+    
+    <div class="reveal">
+      <h1 class="display-text" style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 2rem;">Builder first.<br>Engineer second.</h1>
+      
+      <div style="font-size: 1.15rem; line-height: 1.8; color: var(--text-primary);">
+        <p>I don't hold a traditional computer science degree. I didn't learn through algorithmic puzzles or theoretical models. I learned by building systems that needed to exist.</p>
+        <p>My approach is pragmatic: identify the constraint, design a system that works within it, ship it, and iterate based on reality rather than assumption.</p>
+      </div>
+    </div>
+
+    <div class="card reveal reveal-delay-1" style="padding: 3rem;">
+      <h2 class="mono-text" style="color: var(--accent); margin-bottom: 2rem;">THE PHILOSOPHY</h2>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        <div>
+          <h3 class="display-text" style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">Ship Imperfectly</h3>
+          <p style="font-size: 0.95rem;">A deployed system with flaws generates data. A perfect architecture on a whiteboard generates nothing. I bias heavily toward execution.</p>
+        </div>
+        <div>
+          <h3 class="display-text" style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">Systems > Code</h3>
+          <p style="font-size: 0.95rem;">Code is a liability. The value is in the system's ability to solve the problem. If it can be done with less code, or no code, that is the superior architecture.</p>
+        </div>
+        <div>
+          <h3 class="display-text" style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">AI as Leverage</h3>
+          <p style="font-size: 0.95rem;">I use AI heavily to write code, generate boilerplate, and solve syntax issues. My role isn't typing — it's system architecture, constraint mapping, and technical direction.</p>
+        </div>
+        <div>
+          <h3 class="display-text" style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">Trust & State</h3>
+          <p style="font-size: 0.95rem;">Most interesting software problems are just models for managing trust and state between untrusted actors in a chaotic environment.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

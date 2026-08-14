@@ -1,0 +1,53 @@
+﻿<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<main class="container section">
+  <div class="reveal">
+    <h1 class="display-text" style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem;">Systems & Projects</h1>
+    <p style="font-size: 1.1rem; max-width: 600px; margin-bottom: 3rem;">A catalog of infrastructure, APIs, and products built to solve specific constraints.</p>
+  </div>
+
+  <% if (allTags && allTags.length > 0) { %>
+    <div class="flex gap-2 reveal reveal-delay-1" style="margin-bottom: 3rem; flex-wrap: wrap;">
+      <a href="/projects" class="badge <%= !activeTag ? 'badge-accent' : '' %>">All</a>
+      <% allTags.forEach(tag => { %>
+        <a href="/projects?tag=<%= tag %>" class="badge <%= activeTag === tag ? 'badge-accent' : '' %>"><%= tag %></a>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+    <% projects.forEach((project, index) => { %>
+      <a href="/projects/<%= project.slug %>" class="card card-interactive reveal reveal-delay-<%= (index % 3) + 1 %>" style="display: flex; flex-direction: column;">
+        <div class="flex justify-between items-start" style="margin-bottom: 1rem;">
+          <div>
+            <h2 class="display-text" style="font-size: 1.8rem; margin-bottom: 0.2rem;"><%= project.title %></h2>
+            <div class="mono-text" style="color: var(--accent); font-size: 0.7rem;"><%= project.tagline %></div>
+          </div>
+          <% if (project.status === 'production') { %>
+            <span class="badge badge-success">Live</span>
+          <% } else { %>
+            <span class="badge">Dev</span>
+          <% } %>
+        </div>
+        
+        <p style="font-size: 0.95rem; flex-grow: 1;"><%= project.shortDescription %></p>
+        
+        <div class="flex gap-2" style="flex-wrap: wrap; margin-top: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+          <% project.stack.forEach(tech => { %>
+            <span class="mono-text" style="font-size: 0.7rem; color: var(--text-tertiary);"><%= tech %></span>
+          <% }) %>
+        </div>
+      </a>
+    <% }) %>
+    
+    <% if (projects.length === 0) { %>
+      <div style="grid-column: 1 / -1; padding: 4rem 0; text-align: center;">
+        <p class="mono-text">No systems found matching this criteria.</p>
+        <a href="/projects" class="link-accent mono-text">CLEAR FILTERS</a>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

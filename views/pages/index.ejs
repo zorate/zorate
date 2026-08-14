@@ -1,0 +1,178 @@
+﻿<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <!-- HERO -->
+  <section class="section" style="min-height: 85vh; display: flex; flex-direction: column; justify-content: center; position: relative;">
+    <div class="container reveal">
+      <h1 class="display-text glitch-hover" style="font-size: clamp(3rem, 8vw, 5.5rem); margin-bottom: 2rem; max-width: 800px;">
+        I build systems<br>that actually <em style="color: var(--accent); font-style: normal;">work.</em>
+      </h1>
+      <p style="font-size: clamp(1rem, 2vw, 1.2rem); max-width: 600px; margin-bottom: 3rem;">
+        Backend-focused full-stack developer building practical software around APIs, data, trust, transactions and real-world constraints.
+      </p>
+      <div class="flex gap-4">
+        <a href="/projects" class="btn btn-primary">Explore Systems</a>
+        <a href="/lab" class="btn">Read the Lab</a>
+      </div>
+    </div>
+
+    <!-- Floating Status Card -->
+    <div class="card reveal reveal-delay-2" style="position: absolute; right: 5%; bottom: 10%; width: 280px; padding: 1rem; background: rgba(17, 17, 20, 0.6); backdrop-filter: blur(10px);">
+      <div class="mono-text" style="color: var(--text-tertiary); margin-bottom: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">SYSTEM STATUS</div>
+      <div class="flex justify-between items-center" style="margin-bottom: 0.5rem;">
+        <span class="mono-text">ENGINE</span>
+        <span class="status-indicator"><span class="status-dot"></span></span>
+      </div>
+      <div class="flex justify-between items-center" style="margin-bottom: 0.5rem;">
+        <span class="mono-text">API</span>
+        <span class="status-indicator"><span class="status-dot"></span></span>
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="mono-text">BUILDER</span>
+        <span class="mono-text" style="color: var(--success);">AVAILABLE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDER IDENTITY -->
+  <section class="section border-t" style="background: var(--bg-surface-1);">
+    <div class="container reveal">
+      <h2 class="display-text" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 3rem; color: var(--text-secondary);">
+        BUILD FIRST.<br>
+        <span style="color: var(--text-primary);">LEARN THROUGH IMPLEMENTATION.</span><br>
+        SHIP.<br>
+        REPEAT.
+      </h2>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+        <div>
+          <p>I didn't enter software through a conventional path. No formal training, no clear roadmap. Just curiosity and the decision to start building even when I didn't fully understand what I was doing.</p>
+        </div>
+        <div>
+          <p>Most of what I know came from trying things that didn't work, debugging for days, asking better questions, and shipping anyway. I use AI to move faster, but the responsibility for the system is mine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="section border-t">
+    <div class="container">
+      <div class="flex justify-between items-center" style="margin-bottom: 3rem;">
+        <h2 class="mono-text" style="color: var(--accent);">01 // CORE SYSTEMS</h2>
+        <a href="/projects" class="link-accent mono-text">VIEW ALL →</a>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        <% projects.forEach((project, index) => { %>
+          <a href="/projects/<%= project.slug %>" class="card card-interactive reveal reveal-delay-<%= index % 3 + 1 %>">
+            <div class="flex justify-between items-center" style="margin-bottom: 1rem;">
+              <h3 class="display-text" style="font-size: 1.5rem;"><%= project.title %></h3>
+              <% if (project.status === 'production') { %>
+                <span class="badge badge-success">Live</span>
+              <% } else { %>
+                <span class="badge">Dev</span>
+              <% } %>
+            </div>
+            <p style="font-size: 0.9rem; min-height: 3rem;"><%= project.shortDescription %></p>
+            
+            <% if (project.metrics && project.metrics.users) { %>
+              <div class="flex gap-4 border-t" style="padding-top: 1rem; margin-bottom: 1rem; margin-top: 1rem;">
+                <div>
+                  <div class="mono-text" style="font-size: 0.6rem; color: var(--text-tertiary);">USERS</div>
+                  <div class="mono-text" style="color: var(--text-primary);"><%= project.metrics.users %></div>
+                </div>
+                <% if (project.metrics.gmv) { %>
+                  <div>
+                    <div class="mono-text" style="font-size: 0.6rem; color: var(--text-tertiary);">GMV</div>
+                    <div class="mono-text" style="color: var(--text-primary);"><%= project.metrics.gmv %></div>
+                  </div>
+                <% } %>
+              </div>
+            <% } %>
+
+            <div class="flex gap-2" style="flex-wrap: wrap; margin-top: 1rem;">
+              <% project.stack.slice(0, 4).forEach(tech => { %>
+                <span class="mono-text" style="font-size: 0.7rem; color: var(--text-tertiary);"><%= tech %></span>
+              <% }) %>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINEERING CAPABILITIES -->
+  <section class="section border-t" style="background: var(--bg-surface-1);">
+    <div class="container">
+      <h2 class="mono-text" style="color: var(--accent); margin-bottom: 3rem;">02 // CAPABILITIES</h2>
+      
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <div class="reveal">
+          <h3 class="mono-text" style="color: var(--text-primary); margin-bottom: 1rem;">BACKEND ENGINEERING</h3>
+          <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem; line-height: 2;">
+            <li><span style="color: var(--accent);">+</span> APIs & Architecture</li>
+            <li><span style="color: var(--accent);">+</span> Business Logic</li>
+            <li><span style="color: var(--accent);">+</span> Authentication</li>
+            <li><span style="color: var(--accent);">+</span> Data Modeling</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <h3 class="mono-text" style="color: var(--text-primary); margin-bottom: 1rem;">SYSTEMS THINKING</h3>
+          <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem; line-height: 2;">
+            <li><span style="color: var(--accent);">+</span> Reliability under constraints</li>
+            <li><span style="color: var(--accent);">+</span> Real-world behavior mapping</li>
+            <li><span style="color: var(--accent);">+</span> Performance optimization</li>
+            <li><span style="color: var(--accent);">+</span> Data flow design</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <h3 class="mono-text" style="color: var(--text-primary); margin-bottom: 1rem;">PRODUCT ENGINEERING</h3>
+          <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem; line-height: 2;">
+            <li><span style="color: var(--accent);">+</span> Problem Discovery</li>
+            <li><span style="color: var(--accent);">+</span> Rapid Prototyping</li>
+            <li><span style="color: var(--accent);">+</span> MVP Development</li>
+            <li><span style="color: var(--accent);">+</span> Iteration & Deployment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH MAP -->
+  <section class="section border-t">
+    <div class="container reveal">
+      <h2 class="mono-text" style="color: var(--accent); margin-bottom: 1rem;">03 // STACK TOPOLOGY</h2>
+      <p style="max-width: 500px; margin-bottom: 2rem;">The core technologies I use to build production systems.</p>
+      
+      <div id="tech-map-container" style="width: 100%; height: 300px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden;">
+        <!-- SVG rendered by tech-map.js -->
+      </div>
+      <script src="/js/tech-map.js"></script>
+    </div>
+  </section>
+
+  <!-- THE LAB PREVIEW -->
+  <% if (posts && posts.length > 0) { %>
+  <section class="section border-t" style="background: var(--bg-surface-1);">
+    <div class="container">
+      <div class="flex justify-between items-center" style="margin-bottom: 3rem;">
+        <h2 class="mono-text" style="color: var(--accent);">04 // THE LAB</h2>
+        <a href="/lab" class="link-accent mono-text">READ ALL →</a>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <% posts.forEach((post, i) => { %>
+          <a href="/lab/<%= post.slug %>" class="reveal reveal-delay-<%= i + 1 %>" style="display: block; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.5rem;">
+            <div class="mono-text" style="font-size: 0.7rem; color: var(--text-tertiary); margin-bottom: 0.5rem;"><%= new Date(post.publishedAt).toLocaleDateString() %> // <%= post.readTime %> MIN READ</div>
+            <h3 class="display-text" style="font-size: 1.5rem; margin-bottom: 0.5rem;"><%= post.title %></h3>
+            <p style="font-size: 0.9rem; margin: 0;"><%= post.excerpt %></p>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+  <% } %>
+</main>
+
+<%- include('../partials/footer') %>

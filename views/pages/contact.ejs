@@ -1,0 +1,47 @@
+﻿<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<main class="container section">
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+    
+    <div class="reveal">
+      <h1 class="display-text" style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem;">Contact</h1>
+      <p style="font-size: 1.1rem; margin-bottom: 2rem;">I am interested in hard problems, constrained environments, and systems that manage trust.</p>
+      
+      <div class="flex-col gap-4">
+        <div>
+          <div class="mono-text" style="font-size: 0.7rem; color: var(--text-tertiary); margin-bottom: 0.2rem;">EMAIL PROTOCOL</div>
+          <a href="mailto:zoratejoseph@gmail.com" class="link-accent" style="font-size: 1.2rem; color: var(--text-primary);">zoratejoseph@gmail.com</a>
+        </div>
+        <div>
+          <div class="mono-text" style="font-size: 0.7rem; color: var(--text-tertiary); margin-bottom: 0.2rem;">LOCATION</div>
+          <div style="font-size: 1.2rem; color: var(--text-primary);">Port Harcourt, Nigeria (UTC+1)</div>
+        </div>
+        <div style="margin-top: 2rem;">
+          <a href="https://twitter.com/lonelystockboi" class="btn" target="_blank" rel="noopener">X / Twitter ↗</a>
+          <a href="https://github.com/zorate" class="btn" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal reveal-delay-1">
+      <h2 class="mono-text" style="color: var(--text-primary); margin-bottom: 2rem;">SECURE TRANSMISSION</h2>
+      
+      <!-- A functional-looking form that just opens an email client -->
+      <form action="mailto:zoratejoseph@gmail.com" method="GET" enctype="text/plain">
+        <div class="form-group">
+          <label class="form-label" for="subject">SUBJECT / PURPOSE</label>
+          <input type="text" id="subject" name="subject" class="form-control" placeholder="Project inquiry, collaboration..." required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="body">MESSAGE DATA</label>
+          <textarea id="body" name="body" class="form-control" rows="6" placeholder="Initialize transmission..." required style="resize: vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">TRANSMIT →</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<%- include('../partials/footer') %>
