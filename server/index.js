@@ -8,6 +8,9 @@ const { connectDB } = require('./db');
 const { checkAdminPage } = require('./middleware/auth');
 
 const app = express();
+
+// Trust the first proxy in front of the application (Render).
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
