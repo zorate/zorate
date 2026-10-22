@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const { connectDB } = require('./db');
 const { checkAdminPage } = require('./middleware/auth');
 
+const express = require('express');
 const app = express();
 
 // Trust the first proxy in front of the application (Render).
